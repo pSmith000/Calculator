@@ -153,7 +153,16 @@ namespace Calculator
 
                 answer = Calculate("Please enter two numbers.", "add", "subtract", "multiply", "divide");
 
-                Console.WriteLine("Your answer is " + answer);
+                if (float.IsNaN(answer))
+                {
+                    Console.WriteLine("\nYour answer is not a number");
+                }
+
+                else
+                {
+                    Console.WriteLine("\nYour answer is " + answer);
+                }
+ 
 
                 //The restart game while loop
                 while (!(invalidInput == 1))
