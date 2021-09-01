@@ -39,23 +39,57 @@ namespace Calculator
             int invalidInput = 0;
 
             Console.WriteLine(description);
-            Console.Write("First Number: ");
-            value1 = Console.ReadLine();
-            Console.Write("Second Number: ");
-            value2 = Console.ReadLine();
 
             //Converting strings to floats
-            style = System.Globalization.NumberStyles.Number |
-                    System.Globalization.NumberStyles.AllowCurrencySymbol;
-            culture = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
-            if (Single.TryParse(value1, style, culture, out number1))
 
-            style = System.Globalization.NumberStyles.Number |
-                    System.Globalization.NumberStyles.AllowCurrencySymbol;
-            culture = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
-            if (Single.TryParse(value2, style, culture, out number2))
+            while (!(invalidInput == 1))
+            {
+                Console.Write("First Number: ");
+                value1 = Console.ReadLine();
 
-            
+                style = System.Globalization.NumberStyles.Number |
+                System.Globalization.NumberStyles.AllowCurrencySymbol;
+                culture = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
+                if (Single.TryParse(value1, style, culture, out number1))
+                {
+                    invalidInput = 1;
+                }
+                else
+                {
+                    Console.WriteLine("invalid input");
+                    Console.WriteLine("press ENTER to continue");
+                    Console.ReadKey();
+                    Console.Clear();
+                    invalidInput = 0;
+                }
+            }
+
+            invalidInput = 0;
+
+
+            while (!(invalidInput == 1))
+            {
+                Console.Write("Second Number: ");
+                value2 = Console.ReadLine();
+
+                style = System.Globalization.NumberStyles.Number |
+                System.Globalization.NumberStyles.AllowCurrencySymbol;
+                culture = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
+                if (Single.TryParse(value2, style, culture, out number2))
+                {
+                    invalidInput = 1;
+                }
+                else
+                {
+                    Console.WriteLine("invalid input");
+                    Console.WriteLine("press ENTER to continue");
+                    Console.ReadKey();
+                    Console.Clear();
+                    invalidInput = 0;
+                }
+            }
+
+            invalidInput = 0;
 
 
             while (!(invalidInput == 1 ))
@@ -93,7 +127,7 @@ namespace Calculator
                     Console.WriteLine("invalid input");
                     Console.WriteLine("press enter to continue");
                     Console.ReadKey();
-                        Console.Clear();
+                    Console.Clear();
                     invalidInput = 0;
                 }
             }
