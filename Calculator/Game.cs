@@ -6,12 +6,14 @@ namespace Calculator
 {
     class Game
     {
+        //initializing variables
         string value1;
         string value2;
-        System.Globalization.NumberStyles style;
-        System.Globalization.CultureInfo culture;
         float number1;
         float number2;
+
+        //The following functions are for the operations of the numbers
+        //the user gives
 
         float Add(float num1, float num2)
         {
@@ -33,6 +35,15 @@ namespace Calculator
             return num1 * num2;
         }
 
+        /// <summary>
+        /// Calculates whatever the user wants with whatever number the user gives
+        /// </summary>
+        /// <param name="description"></param>
+        /// <param name="add"></param>
+        /// <param name="subtract"></param>
+        /// <param name="multiply"></param>
+        /// <param name="divide"></param>
+        /// <returns></returns>
         float Calculate(string description, string add, string subtract, string multiply, string divide)
         {
             float answer = 0;
@@ -47,10 +58,7 @@ namespace Calculator
                 Console.Write("First Number: ");
                 value1 = Console.ReadLine();
 
-                style = System.Globalization.NumberStyles.Number |
-                System.Globalization.NumberStyles.AllowCurrencySymbol;
-                culture = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
-                if (Single.TryParse(value1, style, culture, out number1))
+                if (float.TryParse(value1, out number1))
                 {
                     invalidInput = 1;
                 }
@@ -72,10 +80,7 @@ namespace Calculator
                 Console.Write("Second Number: ");
                 value2 = Console.ReadLine();
 
-                style = System.Globalization.NumberStyles.Number |
-                System.Globalization.NumberStyles.AllowCurrencySymbol;
-                culture = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
-                if (Single.TryParse(value2, style, culture, out number2))
+                if (float.TryParse(value2, out number2))
                 {
                     invalidInput = 1;
                 }
@@ -102,6 +107,8 @@ namespace Calculator
 
                 string input = Console.ReadLine();
 
+                //Whatever the player chooses to do, the program goes through the 
+                //corresponding function
                 if (input == "1" || input == add)
                 {
                     answer = Add(number1, number2);
@@ -136,6 +143,7 @@ namespace Calculator
         }
         public void Run()
         {
+            //The game over while loop
             bool gameOver = false;
             int invalidInput = 0;
             while (gameOver == false)
@@ -147,7 +155,7 @@ namespace Calculator
 
                 Console.WriteLine("Your answer is " + answer);
 
-
+                //The restart game while loop
                 while (!(invalidInput == 1))
                 {
                     Console.Write("\nWould you like to calculate more numbers? \n1. Yes\n2. No\n> ");
